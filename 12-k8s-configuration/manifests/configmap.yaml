@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cc-env
+data:
+  CC_APP_DESCRIPTION: "Description set from configmap"
+  CC_STORAGE_DIRECTORY: "/data"

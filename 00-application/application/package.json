@@ -1,0 +1,18 @@
+{
+  "name": "k8s-caen-camp",
+  "version": "1.0.0",
+  "description": "App NodeJS",
+  "main": "api-server.js",
+  "scripts": {
+    "start:api": "node cc-api.js",
+    "start:storage": "node cc-storage.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.27.2",
+    "mime-types": "^2.1.34"
+  }
+}

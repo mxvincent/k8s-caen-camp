@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cc-storage-volume
+  namespace: caen-camp
+data:
+  file-a.json: |
+    { "data": "file a content" }
+  file-b.json: |
+    { "data": "file b content" }

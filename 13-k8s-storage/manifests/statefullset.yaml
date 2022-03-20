@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cc-storage
+  namespace: caen-camp
+spec:
+  serviceName: cc-storage
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cc-storage
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cc-storage
+    spec:
+      terminationGracePeriodSeconds: 2
+      containers:
+        - name: storage-server
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          imagePullPolicy: Always
+          image: ghcr.io/mxvincent/k8s-caen-camp:1.0.0
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: cc-env
+          command:
+            - node
+            - /app/cc-storage.js
+          volumeMounts:
+            - mountPath: /data
+              name: files
+  volumeClaimTemplates:
+    - metadata:
+        name: files
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "scw-bssd"
+        resources:
+          requests:
+            storage: 1Gi
+
+
+

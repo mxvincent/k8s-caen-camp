@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cc-api
+  namespace: caen-camp
+spec:
+  secretName: cc-api-cert
+  dnsNames:
+    - "api.cc.lab.ovh"
+    - "storage.cc.lab.ovh"
+  issuerRef:
+    name: acme
+    kind: ClusterIssuer

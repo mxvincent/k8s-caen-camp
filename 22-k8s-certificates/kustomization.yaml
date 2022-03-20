@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: caen-camp
+resources:
+  - manifests/issuers/acme.yaml
+  - manifests/issuers/acme-staging.yaml
+  - manifests/certificates/cc-tld.yaml
+  - manifests/certificates/cc-sub.yaml
+  - manifests/ingresses/cc-api.yaml
+  - manifests/ingresses/cc-storage.yaml
+
